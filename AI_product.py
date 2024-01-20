@@ -37,4 +37,4 @@ def suggest_products(category, sub_category):
         if len(common_ingredients) > 0:
             print("\nCommon ingredients used in products like this are: ")
             for ingredient in common_ingredients:
-                
+                print(f"- {ingredient}")
