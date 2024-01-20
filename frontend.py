@@ -11,7 +11,7 @@ root = Tk()
 
 myLabel = Label(root, text="Welcome to SSA")
 myLabel.grid(row=0, column=1)
-
+ 
 myLabel2 = Label(root, text="Customizable ChatBot for your website")
 myLabel2.grid(row=3, column=0)
 
