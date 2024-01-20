@@ -38,3 +38,12 @@ def suggest_products(category, sub_category):
             print("\nCommon ingredients used in products like this are: ")
             for ingredient in common_ingredients:
                 print(f"- {ingredient}")
+                
+        print("\nSuggested price range per 100g ")
+        inrprice = shortlistfiltdf['India priceINR per 100g'];
+        usdprice = shortlistfiltdf['US price $ per 100g'];
+        mininr = min(inrprice)
+        maxinr = max(inrprice)
+        minusd = min(usdprice)
+        maxusd = max(usdprice)
+        
