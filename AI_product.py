@@ -55,3 +55,10 @@ def suggest_products(category, sub_category):
             print("USA: Price your product around ", minusd, "dollars.")
         else:
             print("USA: Price your product between ", minusd, "and", maxusd, "dollars.")
+    else:
+        print(f"No products found under {category} -> {sub_category}.")
+
+user_category = input("Enter the category: ")
+user_sub_category = input("Enter the sub category: ")
+
+suggest_products(user_category, user_sub_category)
