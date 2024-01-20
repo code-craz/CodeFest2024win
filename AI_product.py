@@ -23,3 +23,4 @@ def suggest_products(category, sub_category):
         numtodisplay= min(2, numfiltprods)
         print("I am showing ", numtodisplay, "products\n")
         shortlistfiltdf= sortfiltdf.head(numtodisplay)
+        print("Most popular products under thi")
