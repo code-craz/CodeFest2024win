@@ -23,4 +23,12 @@ def suggest_products(category, sub_category):
         numtodisplay= min(2, numfiltprods)
         print("I am showing ", numtodisplay, "products\n")
         shortlistfiltdf= sortfiltdf.head(numtodisplay)
-        print("Most popular products under thi")
+        print(f"Most popular products under {category} -> {sub_category}")
+        print(f"Unique names under {category} -> {sub_category} are: ")
+        unique_product_names= set()
+        for product_name in sortfiltdf['Product_name']:
+            unique_product_names.add(product_name)
+            if len(unique_product_names)>= 2:
+                break
+        for product_name in unique_product_names:
+            
