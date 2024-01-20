@@ -16,4 +16,10 @@ def suggest_products(category, sub_category):
     print("Category given is ", category, "\n")
     print("Sub category given is ", sub_category, "\n")
     filtdf= df[(df['category'].str.lower().strip() == category & df['sub_category'].str.strip().str.lower())]
-    
+    sortfiltdf= filtdf.sort_values(['Reviews'], axis=0, ascending=[False])
+    if sortfiltdf.empty:
+        numfiltprods= len(sortfiltdf)
+        print("There were ", numfiltprods, "products\n")
+        numtodisplay= min(2, numfiltprods)
+        print("I am showing ", numtodisplay, "products\n")
+        shortlistfiltdf= sortfiltdf.head(numtodisplay)
