@@ -34,9 +34,34 @@ def submit_user_input():
 
     # If the chatbot doesn't have a predefined response, display a default message
     if not response:
-        preprocessed_input = user_input.translate(str.maketrans("", "", string.punctuation)).lower()
-        best_match = learning_dict.get(preprocessed_input)
-        if best_match:
-            print(f"Bot: {best_match}")
-        else:
-            print("Bot: I don't know how to respond to that. I will relay you query to our main center. I am sorry for the inconvenience.")
+        output_text.insert(END, "Bot: I am sorry, I do not know how to answer that. "
+                                "I will relay the question to our main center. "
+                                "Sorry for the inconvenience.\n")
+    else:
+        output_text.insert(END, f"Bot: {response}\n")
+
+    user_input_entry.delete(0, END)  # Clear the user input field
+
+# GUI setup
+window = Tk()
+window.title("Chatbot GUI")
+
+# User Input Entry
+user_input_entry = Entry(window, width=50)
+user_input_entry.grid(row=0, column=0, padx=10, pady=10)
+
+# Submit Button
+submit_button = Button(window, text="Submit", command=submit_user_input)
+submit_button.grid(row=0, column=1, padx=10, pady=10)
+
+# Output Text
+output_text = Text(window, width=60, height=20, wrap='word')
+output_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+
+# Scrollbar for Output Text
+scrollbar = Scrollbar(window, command=output_text.yview)
+scrollbar.grid(row=1, column=2, sticky='ns')
+output_text['yscrollcommand'] = scrollbar.set
+
+# Run the GUI
+window.mainloop()
