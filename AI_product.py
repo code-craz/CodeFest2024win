@@ -31,4 +31,10 @@ def suggest_products(category, sub_category):
             if len(unique_product_names)>= 2:
                 break
         for product_name in unique_product_names:
-            
+            print(product_name)
+        
+        common_ingredients = shortlistfiltdf['ingredients'].unique()
+        if len(common_ingredients) > 0:
+            print("\nCommon ingredients used in products like this are: ")
+            for ingredient in common_ingredients:
+                
