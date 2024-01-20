@@ -49,7 +49,7 @@ def learn_response(user_input):
     print("Bot: Thank you for teaching me!")
 
 # Main loop for interacting with the chatbot
-print("Bot: Hello! I'm a simple chatbot. You can type 'quit' to exit.")
+print("Bot: Hello! I'm a chatbot. You can type 'quit' to exit.")
 while True:
     user_input = input("You: ").lower()  # Convert user input to lowercase
     

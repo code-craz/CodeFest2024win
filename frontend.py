@@ -2,10 +2,10 @@ from tkinter import *
 import subprocess
 
 def open_chatbot_file():
-    subprocess.Popen(['python', 'chatbot1.py'], shell=True)
+    subprocess.Popen(['python', 'Chatbot_company.py'], shell=True)
 
 def open_ai_product_file():
-    subprocess.Popen(['python', 'AI_product.py'], shell=True)
+    subprocess.Popen(['python', 'I1ai.py'], shell=True)
 
 root = Tk()
 
