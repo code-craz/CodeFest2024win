@@ -47,3 +47,11 @@ def suggest_products(category, sub_category):
         minusd = min(usdprice)
         maxusd = max(usdprice)
         
+        if mininr == maxinr:
+            print("India: Price your product around ", mininr, "rupees.")
+        else:
+            print("India: Price your product between ", mininr, "and", maxinr, "rupees.")
+        if maxusd == minusd:
+            print("USA: Price your product around ", minusd, "dollars.")
+        else:
+            print("USA: Price your product between ", minusd, "and", maxusd, "dollars.")
