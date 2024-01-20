@@ -17,7 +17,7 @@ patterns = [
 # File path for storing and loading data
 data_file_path = 'chatbot_data.json'
 
-
+# Load existing data from the file or create an empty dictionary
 try:
     with open(data_file_path, 'r') as file:
         data = json.load(file)
@@ -25,7 +25,7 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     learning_dict = {}
 
-
+# Create a simple chatbot
 chatbot = Chat(patterns, reflections)
 
 def preprocess_text(text):
@@ -35,10 +35,45 @@ def preprocess_text(text):
     return text
 
 def learn_response(user_input):
-    
+    # Get the correct response from the user
     correct_response = input("Bot: I don't know how to respond. Please provide a correct response: ")
     
-
+    # Store the preprocessed user input and correct response in the learning dictionary
     preprocessed_input = preprocess_text(user_input)
     learning_dict[preprocessed_input] = correct_response
     
+    # Save the learning dictionary to the file immediately after teaching
+    with open(data_file_path, 'w') as file:
+        json.dump({'learning_dict': learning_dict}, file, indent=2)
+    
+    print("Bot: Thank you for teaching me!")
+
+# Main loop for interacting with the chatbot
+print("Bot: Hello! I'm a simple chatbot. You can type 'quit' to exit.")
+while True:
+    user_input = input("You: ").lower()  # Convert user input to lowercase
+    
+    # Check if the user wants to quit
+    if user_input == 'quit':
+        print("Bot: Goodbye!")
+        break
+
+    # Check if the user wants to teach the chatbot
+    if user_input == 'teach':
+        new_input = input("Bot: What keyword or phrase do you want to teach me a response for? ")
+        learn_response(new_input)
+    else:
+        # Use the chatbot to find a response
+        response = chatbot.respond(user_input)
+        
+        # If the chatbot doesn't have a predefined response, find the best match
+        if not response:
+            preprocessed_input = preprocess_text(user_input)
+            best_match = learning_dict.get(preprocessed_input)
+            if best_match:
+                print(f"Bot: {best_match}")
+            else:
+                learn_response(user_input)
+        else:
+            print(f"Bot: {response}")
+        
