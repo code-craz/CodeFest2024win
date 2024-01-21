@@ -2,7 +2,7 @@ from tkinter import *
 import subprocess
 
 def open_chatbot_file():
-    subprocess.Popen(['python', 'AIcompgui.py'], shell=True)
+    subprocess.Popen(['python', 'intermission.py'], shell=True)
 
 def open_ai_product_file():
     subprocess.Popen(['python', 'AI_productGUI.py'], shell=True)
